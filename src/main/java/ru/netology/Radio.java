@@ -38,10 +38,8 @@ public class Radio {
 
     //переключение станции на 1 вперед
     public void setCurrentRadioNext() {
-        if (currentRadio < maxRadio) {
-            currentRadio = currentRadio + 1;
-        }
-        if (currentRadio == maxRadio) {
+        currentRadio = currentRadio + 1;
+        if (currentRadio > maxRadio) {
             currentRadio = minRadio;
         }
     }
