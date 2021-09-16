@@ -8,12 +8,41 @@ public class Radio {
     private int maxVolume = 10;
     private int minVolume = 0;
 
+    public int getCurrentRadio() {
+        return currentRadio;
+    }
+
+    public void setCurrentRadio(int currentRadio) {
+        if (currentRadio < minRadio) {
+            return;
+        }
+        if (currentRadio > maxRadio) {
+            return;
+        }
+        this.currentRadio = currentRadio;
+    }
+
+    public int getCurrentVolume() {
+        return currentVolume;
+    }
+
+    public void setCurrentVolume(int currentVolume) {
+        if (currentVolume < minVolume) {
+            return;
+        }
+        if (currentVolume > maxVolume) {
+            return;
+        }
+        this.currentVolume = currentVolume;
+    }
+
     //переключение станции на 1 вперед
     public void setCurrentRadioNext() {
+        if (currentRadio < maxRadio) {
+            currentRadio = currentRadio + 1;
+        }
         if (currentRadio == maxRadio) {
             currentRadio = minRadio;
-        } else {
-            currentRadio = currentRadio + 1;
         }
     }
 
@@ -24,23 +53,6 @@ public class Radio {
         } else {
             currentRadio = currentRadio - 1;
         }
-    }
-
-    public void setCurrentRadio(int currentRadio) {
-        this.currentRadio = currentRadio;
-    }
-
-    public int getCurrentRadio() {
-        return currentRadio;
-    }
-
-
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
     }
 
     //увеличение громкости

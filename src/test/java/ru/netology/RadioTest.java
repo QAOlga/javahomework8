@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-    // проверка переключения при макс
+    // проверка переключения вперед при макс
     @Test
     void shouldCurrentRadioNextMax() {
         Radio radio = new Radio();
@@ -14,7 +14,7 @@ class RadioTest {
         assertEquals(0, radio.getCurrentRadio());
     }
 
-    // проверка переключения при мин
+    // проверка переключения назад при мин
     @Test
     void shouldCurrentRadioPrevMin() {
         Radio radio = new Radio();
