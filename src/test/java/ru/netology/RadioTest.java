@@ -5,11 +5,34 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
+    Radio radio = new Radio();
+
+    //проверка установки количества станций с заданным количеством станций
+    @Test
+    public void shouldSetNumberStation() {
+        Radio radio1 = new Radio();
+        radio.setNumberStation(12);
+        assertEquals(12, radio.getNumberStation());
+    }
+
+    //провера установки количества станций при значении макс по умолчанию
+    @Test
+    public void shouldSetNumberStationDefault() {
+        radio.setNumberStation(10);
+        assertEquals(10, radio.getNumberStation());
+    }
+
+    //проверка установки количества станций ниже мин при значении макс по умолчанию
+    @Test
+    public void shouldSetNumberStationUnderMin() {
+        radio.setNumberStation(-5);
+        assertEquals(10, radio.getNumberStation());
+    }
+
     // проверка переключения вперед при макс
     @Test
     public void shouldCurrentRadioNextMax() {
-        Radio radio = new Radio();
-        radio.setCurrentRadio(9);
+        radio.setCurrentRadio(10);
         radio.setCurrentRadioNext();
         assertEquals(0, radio.getCurrentRadio());
     }
@@ -17,16 +40,14 @@ class RadioTest {
     // проверка переключения назад при мин
     @Test
     public void shouldCurrentRadioPrevMin() {
-        Radio radio = new Radio();
         radio.setCurrentRadio(0);
         radio.setCurrentRadioPrev();
-        assertEquals(9, radio.getCurrentRadio());
+        assertEquals(10, radio.getCurrentRadio());
     }
 
     //проверка переключения +
     @Test
     public void shouldCurrentRadioNext() {
-        Radio radio = new Radio();
         radio.setCurrentRadio(8);
         radio.setCurrentRadioNext();
         assertEquals(9, radio.getCurrentRadio());
@@ -43,7 +64,6 @@ class RadioTest {
     // проверка переключения -
     @Test
     public void shouldCurrentRadioPrev() {
-        Radio radio = new Radio();
         radio.setCurrentRadio(5);
         radio.setCurrentRadioPrev();
         assertEquals(4, radio.getCurrentRadio());
@@ -60,7 +80,6 @@ class RadioTest {
     // тест на сеттер
     @Test
     public void shouldSetCurrentRadio() {
-        Radio radio = new Radio();
         radio.setCurrentRadio(5);
         assertEquals(5, radio.getCurrentRadio());
     }
@@ -68,7 +87,6 @@ class RadioTest {
     // тест на сеттер невалидные значения
     @Test
     public void shouldSetCurrentRadioNotValid() {
-        Radio radio = new Radio();
 
         radio.setCurrentRadio(15);
         assertEquals(0, radio.getCurrentRadio());
@@ -80,16 +98,14 @@ class RadioTest {
     //проверка увеличения громкости при макс
     @Test
     public void shouldVolumeUpMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(10);
+        radio.setCurrentVolume(100);
         radio.setVolumeUp();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
     }
 
     //проверка уменьшения громкости при мин
     @Test
     public void shouldVolumeDownMin() {
-        Radio radio = new Radio();
         radio.setCurrentVolume(0);
         radio.setVolumeDown();
         assertEquals(0, radio.getCurrentVolume());
@@ -98,26 +114,24 @@ class RadioTest {
     //проверка увеличения громкости
     @Test
     public void shouldVolumeUp() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(99);
         radio.setVolumeUp();
-        assertEquals(6, radio.getCurrentVolume());
+        assertEquals(100, radio.getCurrentVolume());
 
         radio.setCurrentVolume(1);
         radio.setVolumeUp();
         assertEquals(2, radio.getCurrentVolume());
 
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(55);
         radio.setVolumeUp();
-        assertEquals(10, radio.getCurrentVolume());
+        assertEquals(56, radio.getCurrentVolume());
     }
 
     //проверка установки громкости невалид
     @Test
     public void shouldSetVolumeNotValid() {
-        Radio radio = new Radio();
 
-        radio.setCurrentVolume(30);
+        radio.setCurrentVolume(130);
         assertEquals(0, radio.getCurrentVolume());
 
         radio.setCurrentVolume(-30);
@@ -127,17 +141,16 @@ class RadioTest {
     //проверка уменьшения громкости
     @Test
     public void shouldVolumeDown() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(5);
+        radio.setCurrentVolume(80);
         radio.setVolumeDown();
-        assertEquals(4, radio.getCurrentVolume());
+        assertEquals(79, radio.getCurrentVolume());
 
         radio.setCurrentVolume(1);
         radio.setVolumeDown();
         assertEquals(0, radio.getCurrentVolume());
 
-        radio.setCurrentVolume(9);
+        radio.setCurrentVolume(99);
         radio.setVolumeDown();
-        assertEquals(8, radio.getCurrentVolume());
+        assertEquals(98, radio.getCurrentVolume());
     }
 }
