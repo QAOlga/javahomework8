@@ -7,32 +7,31 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
     Radio radio = new Radio();
 
-    //проверка установки количества станций с заданным количеством станций
-    @Test
-    public void shouldSetNumberStation() {
-        Radio radio1 = new Radio();
-        radio.setNumberStation(12);
-        assertEquals(12, radio.getNumberStation());
-    }
-
-    //провера установки количества станций при значении макс по умолчанию
+    //проверка установки количества станций по умолчанию
     @Test
     public void shouldSetNumberStationDefault() {
         radio.setNumberStation(10);
         assertEquals(10, radio.getNumberStation());
     }
 
-    //проверка установки количества станций ниже мин при значении макс по умолчанию
+    //провера установки количества станций
+    @Test
+    public void shouldSetNumberStation() {
+        Radio radio1 = new Radio(12);
+        assertEquals(12, radio1.getNumberStation());
+    }
+
+    //проверка установки количества станций ниже мин
     @Test
     public void shouldSetNumberStationUnderMin() {
-        radio.setNumberStation(-5);
-        assertEquals(10, radio.getNumberStation());
+        Radio radio2 = new Radio(-5);
+        assertEquals(10, radio2.getNumberStation());
     }
 
     // проверка переключения вперед при макс
     @Test
     public void shouldCurrentRadioNextMax() {
-        radio.setCurrentRadio(10);
+        radio.setCurrentRadio(9);
         radio.setCurrentRadioNext();
         assertEquals(0, radio.getCurrentRadio());
     }
@@ -42,7 +41,7 @@ class RadioTest {
     public void shouldCurrentRadioPrevMin() {
         radio.setCurrentRadio(0);
         radio.setCurrentRadioPrev();
-        assertEquals(10, radio.getCurrentRadio());
+        assertEquals(9, radio.getCurrentRadio());
     }
 
     //проверка переключения +
