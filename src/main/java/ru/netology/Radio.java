@@ -13,6 +13,7 @@ public class Radio {
         if (numberStation <= 0) {
             numberStation = 10;
         }
+        this.maxRadio = numberStation - 1;
         this.numberStation = numberStation;
     }
 
@@ -20,9 +21,11 @@ public class Radio {
     }
 
     public void setNumberStation(int numberStation) {
+        this.maxRadio = numberStation - 1;
         this.numberStation = numberStation;
 
     }
+
     public int getNumberStation() {
         return numberStation;
     }

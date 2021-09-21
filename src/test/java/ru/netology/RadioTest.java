@@ -7,6 +7,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class RadioTest {
     Radio radio = new Radio();
 
+//создать 20 станций и установить 15-ую
+    @Test
+    public void shouldSetNumberStation20() {
+        radio.setNumberStation(20);
+        radio.setCurrentRadio(15);
+        assertEquals(15, radio.getCurrentRadio());
+    }
+
+
     //проверка установки количества станций по умолчанию
     @Test
     public void shouldSetNumberStationDefault() {
